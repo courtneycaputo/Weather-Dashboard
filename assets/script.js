@@ -2,7 +2,7 @@ var searchInput = document.getElementById("search-input");
 var searchForm = document.getElementById("search-form");
 
 function fetchWeather(lat,lon,city){
-    var apiURL = `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=709eaff6487fadf0c26e0bc441b8c854`
+    var apiURL = `http://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=c81ab4993a62219f9361b2e335f5086c`
 
     console.log("lat", lat);
     console.log("lon", lon)
@@ -56,67 +56,48 @@ function fetchWeather(lat,lon,city){
             // 5 Day Forecast Header
             var forecast = document.createElement("h1")
             var currentForecastContainer = document.getElementById("current-forecast");
-            var forecastDate = moment().format("M/D/YYYY");
             forecast.textContent = "5 day Forecast";
             currentForecastContainer.appendChild(forecast);
 
             var dailyForecast = data.daily;
-           
-            
+                              
             var currentForecastTemp = document.createElement("p");
-            currentForecastTemp.classList = 'col-2 card';
+            currentForecastTemp.classList = 'col-2 card bg-primary text-white';
             currentForecastTemp.textContent = `Temp: ${dailyForecast[0].temp.day} Wind: ${dailyForecast[0].wind_speed} Humidity: ${dailyForecast[0].humidity}`
             currentForecastContainer.appendChild(currentForecastTemp);
             
             var currentForecastTemp = document.createElement("p");
-            currentForecastTemp.classList = 'col-2 card';
+            currentForecastTemp.classList = 'col-2 card bg-primary text-white';
             currentForecastTemp.textContent = ` Temp: ${dailyForecast[1].temp.day} Wind: ${dailyForecast[1].wind_speed} Humidity: ${dailyForecast[1].humidity}`
             currentForecastContainer.appendChild(currentForecastTemp);
 
             var currentForecastTemp = document.createElement("p");
-            currentForecastTemp.classList = 'col-2 card';
+            currentForecastTemp.classList = 'col-2 card bg-primary text-white';
             currentForecastTemp.textContent = ` Temp: ${dailyForecast[2].temp.day} Wind: ${dailyForecast[2].wind_speed} Humidity: ${dailyForecast[2].humidity}`
             currentForecastContainer.appendChild(currentForecastTemp);
 
             var currentForecastTemp = document.createElement("p");
-            currentForecastTemp.classList = 'col-2 card';
+            currentForecastTemp.classList = 'col-2 card bg-primary text-white';
             currentForecastTemp.textContent = ` Temp: ${dailyForecast[3].temp.day} Wind: ${dailyForecast[3].wind_speed} Humidity: ${dailyForecast[3].humidity}`
             currentForecastContainer.appendChild(currentForecastTemp);
 
             var currentForecastTemp = document.createElement("p");
-            currentForecastTemp.classList = 'col-2 card';
+            currentForecastTemp.classList = 'col-2 card bg-primary text-white';
             currentForecastTemp.textContent = ` Temp: ${dailyForecast[4].temp.day} Wind: ${dailyForecast[4].wind_speed} Humidity: ${dailyForecast[4].humidity}`
             currentForecastContainer.appendChild(currentForecastTemp);
 
-             // for(var i = 0; i < 5; i++){
-        //     var currentForecastTemp = document.createElement("p");
-                    // const date = new Date();
-                    // date.setDate(date.getDate() + i);
-                    // add to text content if i figure it out: ${date} 
-            // currentForecastTemp.classList = 'col-2 card-body';
-            // currentForecastTemp.textContent = ` Temp: ${dailyForecast[i].temp.day} Wind: ${dailyForecast[i].wind_speed} Humidity: ${dailyForecast[i].humidity}`
-            // // console.log(dailyForecast[i].temp.day)
-            // currentForecastContainer.appendChild(currentForecastTemp);
-            
-
-            // var currentForecastWind = document.createElement("p"[i]);
-            // currentForecastWind.classList = 'col-2';
-            // currentForecastWind.textContent = `Wind: ${dailyForecast[i].wind_speed}`
-            // currentForecastContainer.appendChild(currentForecastWind);
-          
-        // }
-        
+                 
     })
+
+    
 }
-
-
 
 
 searchForm.addEventListener("submit",function(event) {
     event.preventDefault(); 
     
     var search = searchInput.value.trim()
-    var apiURL = `http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=709eaff6487fadf0c26e0bc441b8c854`
+    var apiURL = `http://api.openweathermap.org/geo/1.0/direct?q=${search}&limit=5&appid=c81ab4993a62219f9361b2e335f5086c`
 
     fetch(apiURL).then(function(response){
         return response.json()
@@ -137,8 +118,5 @@ searchForm.addEventListener("submit",function(event) {
 
 })
 
-for(var i = 0; i <=5; i++){
-    const date = new Date();
-    date.setDate(date.getDate() + i);
-    console.log(date);
-}
+
+
