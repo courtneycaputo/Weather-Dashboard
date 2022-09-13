@@ -18,7 +18,6 @@ function fetchWeather(lat,lon,city){
             var currentCity = document.createElement("h1");
             var currentWeather = document.getElementById("current-weather");
             var currentDate = document.createElement("p"); 
-            var forecastDate = moment().format("M/D/YYYY");
             currentCity.textContent = city;
             currentDate.textContent = moment().format("M/D/YYYY");
             currentWeather.appendChild(currentCity);
@@ -57,35 +56,55 @@ function fetchWeather(lat,lon,city){
             // 5 Day Forecast Header
             var forecast = document.createElement("h1")
             var currentForecastContainer = document.getElementById("current-forecast");
+            var forecastDate = moment().format("M/D/YYYY");
             forecast.textContent = "5 day Forecast";
             currentForecastContainer.appendChild(forecast);
 
-        var dailyForecast = data.daily;
-        
-        console.log(dailyForecast)
-
-        for(var i = 0; i <=5; i++){
+            var dailyForecast = data.daily;
+           
+            
             var currentForecastTemp = document.createElement("p");
-            // const date = new Date();
-            // date.setDate(date.getDate() + i);
-            // add to text content if i figure it out: ${date} 
-            currentForecastTemp.classList = 'col-2 border';
-            currentForecastTemp.textContent = ` Temp: ${dailyForecast[i].temp.day} Wind: ${dailyForecast[i].wind_speed} Humidity: ${dailyForecast[i].humidity}`
-            // console.log(dailyForecast[i].temp.day)
+            currentForecastTemp.classList = 'col-2 card';
+            currentForecastTemp.textContent = `Temp: ${dailyForecast[0].temp.day} Wind: ${dailyForecast[0].wind_speed} Humidity: ${dailyForecast[0].humidity}`
             currentForecastContainer.appendChild(currentForecastTemp);
+            
+            var currentForecastTemp = document.createElement("p");
+            currentForecastTemp.classList = 'col-2 card';
+            currentForecastTemp.textContent = ` Temp: ${dailyForecast[1].temp.day} Wind: ${dailyForecast[1].wind_speed} Humidity: ${dailyForecast[1].humidity}`
+            currentForecastContainer.appendChild(currentForecastTemp);
+
+            var currentForecastTemp = document.createElement("p");
+            currentForecastTemp.classList = 'col-2 card';
+            currentForecastTemp.textContent = ` Temp: ${dailyForecast[2].temp.day} Wind: ${dailyForecast[2].wind_speed} Humidity: ${dailyForecast[2].humidity}`
+            currentForecastContainer.appendChild(currentForecastTemp);
+
+            var currentForecastTemp = document.createElement("p");
+            currentForecastTemp.classList = 'col-2 card';
+            currentForecastTemp.textContent = ` Temp: ${dailyForecast[3].temp.day} Wind: ${dailyForecast[3].wind_speed} Humidity: ${dailyForecast[3].humidity}`
+            currentForecastContainer.appendChild(currentForecastTemp);
+
+            var currentForecastTemp = document.createElement("p");
+            currentForecastTemp.classList = 'col-2 card';
+            currentForecastTemp.textContent = ` Temp: ${dailyForecast[4].temp.day} Wind: ${dailyForecast[4].wind_speed} Humidity: ${dailyForecast[4].humidity}`
+            currentForecastContainer.appendChild(currentForecastTemp);
+
+             // for(var i = 0; i < 5; i++){
+        //     var currentForecastTemp = document.createElement("p");
+                    // const date = new Date();
+                    // date.setDate(date.getDate() + i);
+                    // add to text content if i figure it out: ${date} 
+            // currentForecastTemp.classList = 'col-2 card-body';
+            // currentForecastTemp.textContent = ` Temp: ${dailyForecast[i].temp.day} Wind: ${dailyForecast[i].wind_speed} Humidity: ${dailyForecast[i].humidity}`
+            // // console.log(dailyForecast[i].temp.day)
+            // currentForecastContainer.appendChild(currentForecastTemp);
             
 
             // var currentForecastWind = document.createElement("p"[i]);
             // currentForecastWind.classList = 'col-2';
             // currentForecastWind.textContent = `Wind: ${dailyForecast[i].wind_speed}`
             // currentForecastContainer.appendChild(currentForecastWind);
-
-
-
-            
-        }
-
-
+          
+        // }
         
     })
 }
