@@ -7,6 +7,7 @@ This project was to create a weather dashboard. Upon searching the name of a cit
 <img src="/assets/Screenshot.png">
 
 ## Project Link
+<a href="https://courtneycaputo.github.io/Weather-Dashboard/">Weather Dashboard</a>
 
 ## License
 Distributed under the MIT License. See `LICENSE.txt` for more information.
