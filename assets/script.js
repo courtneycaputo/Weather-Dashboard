@@ -3,10 +3,13 @@ var searchForm = document.getElementById("search-form");
 
 function fetchWeather(lat,lon,city){
     var apiURL = `http://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=709eaff6487fadf0c26e0bc441b8c854`
-    
 
+    console.log("lat", lat);
+    console.log("lon", lon)
+    
     fetch(apiURL).then(function(response){
     return response.json()
+ 
 
     }).then(function(data){
         
@@ -15,6 +18,7 @@ function fetchWeather(lat,lon,city){
             var currentCity = document.createElement("h1");
             var currentWeather = document.getElementById("current-weather");
             var currentDate = document.createElement("p"); 
+            var forecastDate = moment().format("M/D/YYYY");
             currentCity.textContent = city;
             currentDate.textContent = moment().format("M/D/YYYY");
             currentWeather.appendChild(currentCity);
@@ -50,25 +54,31 @@ function fetchWeather(lat,lon,city){
             currentWeather.appendChild(currentUvi);
 
         // 5 Day Forecast
-        var forecast = document.createElement("h1")
-        var currentForecastContainer = document.getElementById("current-forecast");
-        forecast.textContent = "5 day Forecast";
-        currentForecastContainer.appendChild(forecast);
+            // 5 Day Forecast Header
+            var forecast = document.createElement("h1")
+            var currentForecastContainer = document.getElementById("current-forecast");
+            forecast.textContent = "5 day Forecast";
+            currentForecastContainer.appendChild(forecast);
 
         var dailyForecast = data.daily;
         
         console.log(dailyForecast)
 
-        for(var index = 0; index <=5; index++){
-             var currentForecastTemp = document.createElement("p"[index]);
-             currentForecastTemp.textContent = `Temp: ${dailyForecast[index].temp.day}`
-             console.log(dailyForecast[index].temp.day)
+        for(var i = 0; i <=5; i++){
+            var currentForecastTemp = document.createElement("p");
+            // const date = new Date();
+            // date.setDate(date.getDate() + i);
+            // add to text content if i figure it out: ${date} 
+            currentForecastTemp.classList = 'col-2 border';
+            currentForecastTemp.textContent = ` Temp: ${dailyForecast[i].temp.day} Wind: ${dailyForecast[i].wind_speed} Humidity: ${dailyForecast[i].humidity}`
+            // console.log(dailyForecast[i].temp.day)
             currentForecastContainer.appendChild(currentForecastTemp);
+            
 
-            var currentForecastWind = document.createElement("p"[index]);
-            currentForecastWind.textContent = `Wind: ${dailyForecast[index].wind_speed}`
- 
-           currentForecastContainer.appendChild(currentForecastWind);
+            // var currentForecastWind = document.createElement("p"[i]);
+            // currentForecastWind.classList = 'col-2';
+            // currentForecastWind.textContent = `Wind: ${dailyForecast[i].wind_speed}`
+            // currentForecastContainer.appendChild(currentForecastWind);
 
 
 
@@ -107,3 +117,9 @@ searchForm.addEventListener("submit",function(event) {
     searchInput.value = "";
 
 })
+
+for(var i = 0; i <=5; i++){
+    const date = new Date();
+    date.setDate(date.getDate() + i);
+    console.log(date);
+}
